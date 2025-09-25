@@ -80,7 +80,7 @@
         config = lib.mkIf cfg.enable {
           nixpkgs.overlays = [self.overlays.default];
 
-          networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall cfg.port;
+          networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall cfg.port;
 
           systemd.services.intel-gpu-exporter = {
             description = "intel-gpu-exporter service";
