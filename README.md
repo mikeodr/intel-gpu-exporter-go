@@ -86,9 +86,9 @@ Add to your NixOS configuration:
     enable = true;
     port = 8080;
     openFirewall = true;
-    user = "intel-gpu-exporter";
   };
 }
+```
 
 ## Usage
 

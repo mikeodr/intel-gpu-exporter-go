@@ -71,8 +71,16 @@
           description = "The port to run the exporter server on.";
         };
 
+        openFirewall = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Whether to open the firewall for the specified port.";
+        };
+
         config = lib.mkIf cfg.enable {
           nixpkgs.overlays = [self.overlays.default];
+
+          networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall cfg.port;
 
           systemd.services.intel-gpu-exporter = {
             description = "intel-gpu-exporter service";
