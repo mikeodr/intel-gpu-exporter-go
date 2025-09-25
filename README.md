@@ -82,23 +82,6 @@ go install github.com/mikeodr/intel-gpu-exporter-go
 
 ### Nix/NixOS
 
-#### Using Nix Flakes
-
-```bash
-# Run directly
-nix run github:mikeodr/intel-gpu-exporter-go
-
-# Install to profile
-nix profile install github:mikeodr/intel-gpu-exporter-go
-
-# Build locally
-git clone https://github.com/mikeodr/intel-gpu-exporter-go.git
-cd intel-gpu-exporter-go
-nix build
-```
-
-#### NixOS Module
-
 Add to your NixOS configuration:
 
 ```nix
