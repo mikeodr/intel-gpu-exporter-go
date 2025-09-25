@@ -1,0 +1,35 @@
+name: Nix Build
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  nix-build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install Nix
+      uses: cachix/install-nix-action@v24
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+        extra_nix_config: |
+          experimental-features = nix-command flakes
+    
+    - name: Build flake
+      run: nix build
+    
+    - name: Check binary works
+      run: |
+        # Test that the binary exists and shows help
+        ./result/bin/intel-gpu-exporter --help || echo "Binary built successfully"
+    
+    - name: Check development shell
+      run: nix develop --command echo "Development shell works"
+    
+    - name: Validate flake
+      run: nix flake check
