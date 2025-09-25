@@ -30,23 +30,13 @@ A Prometheus exporter for Intel GPU metrics, built in Go. This exporter uses `in
 ### Installing intel_gpu_top
 
 On Ubuntu/Debian:
+
 ```bash
 sudo apt-get install intel-gpu-tools
 ```
 
-On RHEL/CentOS/Fedora:
-```bash
-sudo dnf install intel-gpu-tools
-# or on older versions:
-sudo yum install intel-gpu-tools
-```
-
-On Arch Linux:
-```bash
-sudo pacman -S intel-gpu-tools
-```
-
 On NixOS:
+
 ```Nix
 environment.systemPackages = with pkgs; [
     intel-gpu-tools
@@ -113,7 +103,8 @@ Start the exporter on the default port (8080):
 ### Accessing Metrics
 
 Once running, metrics are available at:
-```
+
+```bash
 http://localhost:8080/metrics
 ```
 
