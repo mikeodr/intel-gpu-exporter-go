@@ -76,25 +76,25 @@
           default = false;
           description = "Whether to open the firewall for the specified port.";
         };
+      };
 
-        config = lib.mkIf cfg.enable {
-          nixpkgs.overlays = [self.overlays.default];
+      config = lib.mkIf cfg.enable {
+        nixpkgs.overlays = [self.overlays.default];
 
-          networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall cfg.port;
+        networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall cfg.port;
 
-          systemd.services.intel-gpu-exporter = {
-            description = "intel-gpu-exporter service";
-            after = ["network.target"];
-            wants = ["network.target"];
-            wantedBy = ["multi-user.target" "network-online.target"];
-            serviceConfig = {
-              Restart = "always";
-              RestartSec = "15";
-              ExecStart = ''
-                ${cfg.package}/bin/intel-gpu-exporter \
-                  ${lib.optionalString (cfg.port != 443) ("--port " + toString cfg.port)} \
-              '';
-            };
+        systemd.services.intel-gpu-exporter = {
+          description = "intel-gpu-exporter service";
+          after = ["network.target"];
+          wants = ["network.target"];
+          wantedBy = ["multi-user.target" "network-online.target"];
+          serviceConfig = {
+            Restart = "always";
+            RestartSec = "15";
+            ExecStart = ''
+              ${cfg.package}/bin/intel-gpu-exporter \
+                ${lib.optionalString (cfg.port != 443) ("--port " + toString cfg.port)} \
+            '';
           };
         };
       };
