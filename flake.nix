@@ -41,6 +41,13 @@
           else "dev";
         src = pkgs.nix-gitignore.gitignoreSource [] ./.;
         vendorHash = "sha256-s6wRiGWbzwDHgtPuQjUpdvt/Hk/f0KpcMpBiFvrre+Q="; # SHA based on vendoring go.mod
+
+        # Rename the binary from intel-gpu-exporter-go to intel-gpu-exporter
+        postInstall = ''
+          if [ -f $out/bin/intel-gpu-exporter-go ]; then
+            mv $out/bin/intel-gpu-exporter-go $out/bin/intel-gpu-exporter
+          fi
+        '';
       };
     });
 
