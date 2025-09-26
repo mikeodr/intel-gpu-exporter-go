@@ -104,6 +104,9 @@
               ${cfg.package}/bin/intel-gpu-exporter \
                 ${lib.optionalString (cfg.port != 443) ("--port " + toString cfg.port)} \
             '';
+            Environment = [
+              "PATH=$PATH:${pkgs.intel-gpu-tools}/bin"
+            ];
           };
         };
       };
