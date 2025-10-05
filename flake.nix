@@ -40,6 +40,9 @@
           then self.shortRev
           else "dev";
         src = pkgs.nix-gitignore.gitignoreSource [] ./.;
+        ldflags = [
+          "-s"
+        ];
         vendorHash = "sha256-s6wRiGWbzwDHgtPuQjUpdvt/Hk/f0KpcMpBiFvrre+Q="; # SHA based on vendoring go.mod
 
         # Rename the binary from intel-gpu-exporter-go to intel-gpu-exporter
