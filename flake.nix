@@ -29,6 +29,7 @@
         src = pkgs.nix-gitignore.gitignoreSource [] ./.;
         ldflags = [
           "-s"
+          "-w"
         ];
         vendorHash = "sha256-s6wRiGWbzwDHgtPuQjUpdvt/Hk/f0KpcMpBiFvrre+Q="; # SHA based on vendoring go.mod
 
