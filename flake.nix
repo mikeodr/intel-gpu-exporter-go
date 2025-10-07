@@ -11,23 +11,10 @@
     nixpkgs,
     systems,
   }: let
-    goVersion = "1.25.1";
-    goHash = "sha256-0BDBCc7pTYDv5oHqtGvepJGskGv0ZYPDLp8NuwvRpZQ=";
     eachSystem = f:
       nixpkgs.lib.genAttrs (import systems) (system:
         f (import nixpkgs {
           system = system;
-          overlays = [
-            (final: prev: {
-              go_1_25 = prev.go_1_25.overrideAttrs {
-                version = goVersion;
-                src = prev.fetchurl {
-                  url = "https://go.dev/dl/go${goVersion}.src.tar.gz";
-                  hash = goHash;
-                };
-              };
-            })
-          ];
         }));
   in {
     formatter = eachSystem (pkgs: pkgs.nixpkgs-fmt);
