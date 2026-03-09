@@ -42,4 +42,4 @@ jobs:
       run: go vet ./...
     
     - name: Run staticcheck
-      uses: dominikh/staticcheck-action@v1.4.0
+      uses: dominikh/staticcheck-action@v1.4.1
