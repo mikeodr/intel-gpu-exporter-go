@@ -20,7 +20,7 @@
     formatter = eachSystem (pkgs: pkgs.nixpkgs-fmt);
 
     packages = eachSystem (pkgs: {
-      default = pkgs.buildGo125Module {
+      default = pkgs.buildGo126Module {
         pname = "intel-gpu-exporter";
         version =
           if (self ? shortRev)
