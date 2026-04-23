@@ -2,7 +2,7 @@
   description = "Intel GPU Exporter for Prometheus";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs";
     systems.url = "github:nix-systems/default";
   };
 
