@@ -1,6 +1,6 @@
 module github.com/mikeodr/intel-gpu-exporter-go
 
-go 1.26.3
+go 1.26.4
 
 require (
 	github.com/frankban/quicktest v1.14.6
