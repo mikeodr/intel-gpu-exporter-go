@@ -20,7 +20,7 @@
     formatter = eachSystem (pkgs: pkgs.nixpkgs-fmt);
 
     packages = eachSystem (pkgs: {
-      default = pkgs.buildGo126Module {
+      default = pkgs.buildGo127Module {
         pname = "intel-gpu-exporter";
         version =
           if (self ? shortRev)
@@ -31,7 +31,7 @@
           "-s"
           "-w"
         ];
-        vendorHash = "sha256-s6wRiGWbzwDHgtPuQjUpdvt/Hk/f0KpcMpBiFvrre+Q="; # SHA based on vendoring go.mod
+        vendorHash = "sha256-r3Z3lCs9101tt+WLrJbbo0LAB/dRIhuu/QcyxI/mg48="; # SHA based on vendoring go.mod
 
         # Rename the binary from intel-gpu-exporter-go to intel-gpu-exporter
         postInstall = ''
